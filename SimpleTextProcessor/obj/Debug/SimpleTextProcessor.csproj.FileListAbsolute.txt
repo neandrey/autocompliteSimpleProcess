@@ -1,0 +1,6 @@
+c:\users\ne_andrey\documents\visual studio 2015\Projects\SimpleTextProcessor\SimpleTextProcessor\bin\Debug\SimpleTextProcessor.exe.config
+c:\users\ne_andrey\documents\visual studio 2015\Projects\SimpleTextProcessor\SimpleTextProcessor\bin\Debug\SimpleTextProcessor.exe
+c:\users\ne_andrey\documents\visual studio 2015\Projects\SimpleTextProcessor\SimpleTextProcessor\bin\Debug\SimpleTextProcessor.pdb
+c:\users\ne_andrey\documents\visual studio 2015\Projects\SimpleTextProcessor\SimpleTextProcessor\obj\Debug\SimpleTextProcessor.csprojResolveAssemblyReference.cache
+c:\users\ne_andrey\documents\visual studio 2015\Projects\SimpleTextProcessor\SimpleTextProcessor\obj\Debug\SimpleTextProcessor.exe
+c:\users\ne_andrey\documents\visual studio 2015\Projects\SimpleTextProcessor\SimpleTextProcessor\obj\Debug\SimpleTextProcessor.pdb
