@@ -13,12 +13,13 @@ namespace SimpleTextProcessor
     {
         static void Main(string[] args)
         {
+            ClassData.InitialData();
 
-            var connectStringDB = ConfigurationManager.ConnectionStrings["DefaultConnection"].ConnectionString;
-            var text = File.ReadAllText("HarryPotterText.txt");
-            var sentences = SentencesParserTask.ParseSentences(text);
-            var frequency = FrequencyAnalysisTask.GetMostFrequentNextWords(sentences);
-            //dataBaseInitial.dbInitialMethod(connectStringDB, frequency);
+            //while (true)
+            //{
+
+            //}
+           
 
             Console.ReadKey();
         }

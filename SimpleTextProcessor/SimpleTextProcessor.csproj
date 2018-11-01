@@ -44,6 +44,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="ClassData.cs" />
     <Compile Include="dataBaseInitial.cs" />
     <Compile Include="FrequencyAnalysisTask.cs" />
     <Compile Include="Program.cs" />
