@@ -14,6 +14,7 @@ namespace SimpleTextProcessor
             var sentences = SentencesParserTask.ParseSentences(text);
             var frequency = FrequencyAnalysisTask.GetMostFrequentNextWords(sentences);
             //dataBaseInitial.dbInitialMethod(connectStringDB, frequency);
+            dataBaseInitial.dbSelectMethod(connectStringDB, frequency);
         }
 
     }
