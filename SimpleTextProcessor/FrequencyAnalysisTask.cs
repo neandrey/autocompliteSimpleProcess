@@ -12,30 +12,36 @@ namespace SimpleTextProcessor
             char ch = '\'';
             var result = new Dictionary<string, int>();
 
-
             foreach (var sentence in text)
             {
                 foreach (var word in sentence)
                 {
-                    if (word.Length < 3 && word.Length > 15)
+                    if (word.Length < 3 || word.Length > 15)
                     {
+                        //integration++;
                         continue;
-                    }
-                    else if (word.IndexOf(ch) != -1)
-                    {
-                        string[] words = word.Split(ch);    
-                        var output = words[0] + "''" + words[1];
-                        addElementDictionary(output, result);
                     }
                     else
                     {
-                        addElementDictionary(word, result);
-                       
-                    }
+                        if (word.IndexOf(ch) != -1)
+                        {
+                            string[] words = word.Split(ch);
+                            var output = words[0] + "''" + words[1];
+                            addElementDictionary(output, result);
+                        }
+                        else
+                        {
+                            addElementDictionary(word, result);
+                        }
+                    }    
                 }
-
             }
             result = RemoveWordMaxThreeSymbols(result);
+
+            foreach(var pair in result)
+            {
+                Console.WriteLine("key={0} \t value = {1}", pair.Key, pair.Value);
+            }
 
             return result;
         }

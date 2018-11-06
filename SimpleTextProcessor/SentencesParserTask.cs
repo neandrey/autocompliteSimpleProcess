@@ -5,7 +5,7 @@ namespace SimpleTextProcessor
 {
     internal class SentencesParserTask
     {
-
+        //-----------------------------------------------------
         public static List<List<string>> ParseSentences(string text)
             {
                 var sentencesList = new List<List<string>>();
@@ -20,8 +20,7 @@ namespace SimpleTextProcessor
                 return sentencesList;
             }
 
-
-
+        //--------------------------------------------------------------
         private static List<string> SymbolParsing(string symbolArray)
             {
                 List<string> wordsInSentence = new List<string>();
