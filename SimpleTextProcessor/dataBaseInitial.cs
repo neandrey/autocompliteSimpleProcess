@@ -9,29 +9,41 @@ namespace SimpleTextProcessor
 {
     internal class dataBaseInitial
     {
-
         internal static void dbInitialMethod(string connectStringDB, Dictionary<string, int> frequency)
         {
-            string sql = string.Format("INSERT Into Name (word, wordCount) VALUES (@word, @wordCount)");
-            using (SqlConnection connection = new SqlConnection(connectStringDB))
+            
+            dataSetSimpleText ds = new dataSetSimpleText();
+            dataSetSimpleText.NameDataTable tblName = ds.Name;
+
+            dataSetSimpleTextTableAdapters.NameTableAdapter daName;
+
+            daName = new dataSetSimpleTextTableAdapters.NameTableAdapter();
+            //Console.WriteLine(daName.ClearBeforeFill = false);
+
+
+
+            dataSetSimpleText.NameRow rowName = tblName.NewNameRow();
+
+            foreach (var e in frequency)
             {
-                
-                connection.Open();
-                Console.WriteLine("Подключение открыто");
-                SqlCommand command = new SqlCommand(sql, connection);
-                command.Parameters.Add("@word", SqlDbType.NVarChar);
-                command.Parameters.Add("@wordCount", SqlDbType.Int);
-                foreach(KeyValuePair<string, int> key in frequency.AsEnumerable())
-                {
-                    command.Parameters["@word"].Value = key.Key;
-                    command.Parameters["@wordCount"].Value = key.Value;
-                    Console.WriteLine(command.ExecuteNonQuery());
-                }
-                
+                rowName.word = e.Key;
+                rowName.wordCount = e.Value;
+                tblName.AddNameRow(rowName);
             }
-             Console.WriteLine("Подключение закрыто...");
+
+
+            Console.WriteLine("Load data ...");
+            daName.Update(tblName);
+            Console.WriteLine("End load data ");
+
         }
 
+        private static void DisplayRow(DataRow row)
+        {
+            DataTable tbl = row.Table;
+            foreach (DataColumn col in tbl.Columns)
+                Console.WriteLine("\t" + col.ColumnName + ": " + row[col]); 
+        }
         internal static void dbUpdateMethod(string connectStringDB, string text)
         {
             //string sqlExpression = string.Format("update name set @word, @wordCount");
@@ -80,6 +92,7 @@ namespace SimpleTextProcessor
 
         internal static void dbDeleteMethod(string connectStringDB)
         {
+            
             string sqlExpression = "truncate table Name";
             using (SqlConnection connection = new SqlConnection(connectStringDB))
             {

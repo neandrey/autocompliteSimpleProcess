@@ -1,0 +1,7 @@
+C:\Users\ne_andrey\Documents\Visual Studio 2015\Projects\SimpleTextProcessor\SimpleTextProcessor\bin\Release\SimpleTextProcessor.exe.config
+C:\Users\ne_andrey\Documents\Visual Studio 2015\Projects\SimpleTextProcessor\SimpleTextProcessor\bin\Release\simpleDataDB.mdf
+C:\Users\ne_andrey\Documents\Visual Studio 2015\Projects\SimpleTextProcessor\SimpleTextProcessor\bin\Release\simpleDataDB_log.ldf
+C:\Users\ne_andrey\Documents\Visual Studio 2015\Projects\SimpleTextProcessor\SimpleTextProcessor\bin\Release\SimpleTextProcessor.exe
+C:\Users\ne_andrey\Documents\Visual Studio 2015\Projects\SimpleTextProcessor\SimpleTextProcessor\bin\Release\SimpleTextProcessor.pdb
+C:\Users\ne_andrey\Documents\Visual Studio 2015\Projects\SimpleTextProcessor\SimpleTextProcessor\obj\Release\SimpleTextProcessor.exe
+C:\Users\ne_andrey\Documents\Visual Studio 2015\Projects\SimpleTextProcessor\SimpleTextProcessor\obj\Release\SimpleTextProcessor.pdb

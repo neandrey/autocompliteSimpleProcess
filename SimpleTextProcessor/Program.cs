@@ -13,46 +13,76 @@ namespace SimpleTextProcessor
     {
         static void Main(string[] args)
         {
-            var connectStringDB =
-                ConfigurationManager.ConnectionStrings["DefaultConnection"].ConnectionString;
+            var connectStringDB = 
+                ConfigurationManager.ConnectionStrings
+                ["SimpleTextProcessor.Properties.Settings.simpleDataDBConnectionString"].
+                ConnectionString;
 
             if (args.Length != 0)
             {
-                switch (args[0])
+                try
                 {
-                    
-                    case "create":
-                        var createData = new ClassData();
-                        createData.InitialData(connectStringDB, 
-                            File.ReadAllText(readFileText(new FileInfo(args[1])), Encoding.UTF8));
-                        break;
+                    switch (args[0])
+                    {
+                        case "create":
+                            var createData = new ClassData();
+                                createData.InitialData(connectStringDB,
+                                    File.ReadAllText(readFileText(new FileInfo(args[1])), Encoding.UTF8));
+                            break;
 
-                    case "delete":
-                        var deleteData = new ClassData();
-                        deleteData.DeleteData(connectStringDB);
-                        break;
+                        case "delete":
+                            var deleteData = new ClassData();
+                            deleteData.DeleteData(connectStringDB);
+                            break;
 
-                    case "update":
-                        var updateDate = new ClassData();
-                        updateDate.UpdateData(connectStringDB,
-                           File.ReadAllText(readFileText(new FileInfo(args[1])), Encoding.UTF8));
-                        break;
+                        case "update":
+                            var updateDate = new ClassData();
+                            updateDate.UpdateData(connectStringDB,
+                               File.ReadAllText(readFileText(new FileInfo(args[1])), Encoding.UTF8));
+                            break;
 
-                    default:
-                        Console.WriteLine("Argument unknown. Right arg: create, delete, update");
-                        break;
+                        default:
+                            Console.WriteLine("Argument unknown. Right arg: create, delete, update");
+                            break;
+                    }
+                }
+                catch(FileNotFoundException e)
+                {
+                    Console.WriteLine("File not found");
+                }
+                catch(IndexOutOfRangeException e)
+                {
+                    Console.WriteLine("argsl[1].Length == 0");
+                }
+                finally
+                {
+                    exitProgramm();
                 }
             }
             else
             {
-                helloString(">");
-                var classData = new ClassData();
-                var autocomplitWord = Console.ReadLine();
-                classData.AutoComplite(connectStringDB, autocomplitWord);
+                while (true)
+                {
+                    helloString(">");
+                    var classData = new ClassData();
+                    var autocomplitWord = Console.ReadLine();
+                    if (autocomplitWord.Length != 0)
+                        classData.AutoComplite(connectStringDB, autocomplitWord);
+                    else
+                        exitProgramm();
+                }
             }
-            //----------------------------------------------------------------
+                    
+        //----------------------------------------------------------------
             Console.ReadKey();
         }
+
+        private static void exitProgramm()
+        {
+            Console.ReadKey();
+            Environment.Exit(0);
+        }
+
         //---------------------------------------------------------------------
         private static void helloString(string hello)
         {
@@ -65,8 +95,7 @@ namespace SimpleTextProcessor
             Console.WriteLine("file name: {0}", fileName.Name);
 
             if (!fileName.Exists)
-            {
-                Console.WriteLine("File not found");
+            { 
                 throw new FileNotFoundException();
             }        
             else

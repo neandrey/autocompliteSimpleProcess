@@ -38,10 +38,10 @@ namespace SimpleTextProcessor
             }
             result = RemoveWordMaxThreeSymbols(result);
 
-            foreach(var pair in result)
-            {
-                Console.WriteLine("key={0} \t value = {1}", pair.Key, pair.Value);
-            }
+            //foreach(var pair in result)
+            //{
+            //    Console.WriteLine("key={0} \t value = {1}", pair.Key, pair.Value);
+            //}
 
             return result;
         }
