@@ -27,11 +27,12 @@ namespace SimpleTextProcessor
             }
 
             // Console.WriteLine(daName.Fill(tblName));
+            Console.WriteLine("Load data...");
             foreach (var e in frequency)
             {
                 daName.Insert(e.Key, e.Value);
             }
-
+            Console.WriteLine("End Load data...");
         }
 
         private static void DisplayRow(DataRow row)
@@ -40,6 +41,8 @@ namespace SimpleTextProcessor
             foreach (DataColumn col in tbl.Columns)
                 Console.WriteLine("\t" + col.ColumnName + ": " + row[col]); 
         }
+
+        //-------------------------------------------------------------------------------
         internal static void dbUpdateMethod(string connectStringDB, Dictionary<string, int> frequency)
         {
             dataSetSimpleText ds = new dataSetSimpleText();
@@ -61,6 +64,7 @@ namespace SimpleTextProcessor
            
         }
 
+        //-------------------------------------------------------------------------------
         internal static void dbAutoComplSearch(string connectStringDB, string autocomplitWord)
         {
             var findWorldDict = new Dictionary<string, int>();
@@ -83,20 +87,21 @@ namespace SimpleTextProcessor
                     continue;
                 findWorldDict.Add(rowName.word, rowName.wordCount);
             }
- 
 
-            foreach(var searchWords in findWorldDict)
-            {
+            findWorldDict = findWorldDict.
+                OrderByDescending(pair => pair.Value).
+                ToDictionary(pair => pair.Key, pair => pair.Value);
 
-                Console.WriteLine(searchWords.Key, '\t', searchWords.Value);
+            // Место для сортировки по ключу при равных значениях Value.
 
-            }
+            printDisplayFiveValue(findWorldDict, 5);
 
         }
 
+        
+        //-------------------------------------------------------------------------------
         internal static void dbDeleteMethod(string connectStringDB)
         {
-            
             string sqlExpression = "truncate table Name";
             using (SqlConnection connection = new SqlConnection(connectStringDB))
             {
@@ -107,8 +112,7 @@ namespace SimpleTextProcessor
             }
         }
 
-
-
+        //-------------------------------------------------------------------------------
         internal static void dbSelectMethod(string connectStringDB)
         {
             string sqlExpression = "SELECT * FROM NAME";
@@ -131,5 +135,19 @@ namespace SimpleTextProcessor
                 }
             }
         }
+
+        //-------------------------------------------------------------------------------
+        private static void printDisplayFiveValue(Dictionary<string, int> findWorldDict, int iteral)
+        {
+            foreach (var searchFiveWords in findWorldDict)
+            {
+                if (iteral == 0)
+                    break;
+                Console.WriteLine("{0} \t {1}", searchFiveWords.Key, searchFiveWords.Value);
+                iteral--;
+            }
+
+        }
+
     }
 }
