@@ -57,7 +57,16 @@ SELECT Id, word, wordCount FROM Name WHERE (Id = @Id)</CommandText>
               <Mapping SourceColumn="word" DataSetColumn="word" />
               <Mapping SourceColumn="wordCount" DataSetColumn="wordCount" />
             </Mappings>
-            <Sources />
+            <Sources>
+              <DbSource ConnectionRef="simpleDataDBConnectionString (Settings)" DbObjectType="Unknown" GenerateShortCommands="true" GeneratorSourceName="ScalarQuery" Modifier="Public" Name="ScalarQuery" QueryType="Scalar" ScalarCallRetval="System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetDataBy" UserSourceName="ScalarQuery">
+                <SelectCommand>
+                  <DbCommand CommandType="Text" ModifiedByUser="true">
+                    <CommandText>SELECT COUNT(*) FROM Name</CommandText>
+                    <Parameters />
+                  </DbCommand>
+                </SelectCommand>
+              </DbSource>
+            </Sources>
           </TableAdapter>
         </Tables>
         <Sources />
@@ -67,7 +76,7 @@ SELECT Id, word, wordCount FROM Name WHERE (Id = @Id)</CommandText>
   <xs:element name="dataSetSimpleText" msdata:IsDataSet="true" msdata:UseCurrentLocale="true" msprop:EnableTableAdapterManager="true" msprop:Generator_DataSetName="dataSetSimpleText" msprop:Generator_UserDSName="dataSetSimpleText">
     <xs:complexType>
       <xs:choice minOccurs="0" maxOccurs="unbounded">
-        <xs:element name="Name" msprop:Generator_TableClassName="NameDataTable" msprop:Generator_TableVarName="tableName" msprop:Generator_TablePropName="Name" msprop:Generator_RowDeletingName="NameRowDeleting" msprop:Generator_RowChangingName="NameRowChanging" msprop:Generator_RowEvHandlerName="NameRowChangeEventHandler" msprop:Generator_RowDeletedName="NameRowDeleted" msprop:Generator_UserTableName="Name" msprop:Generator_RowChangedName="NameRowChanged" msprop:Generator_RowEvArgName="NameRowChangeEvent" msprop:Generator_RowClassName="NameRow">
+        <xs:element name="Name" msprop:Generator_TableClassName="NameDataTable" msprop:Generator_TableVarName="tableName" msprop:Generator_RowChangedName="NameRowChanged" msprop:Generator_TablePropName="Name" msprop:Generator_RowDeletingName="NameRowDeleting" msprop:Generator_RowChangingName="NameRowChanging" msprop:Generator_RowEvHandlerName="NameRowChangeEventHandler" msprop:Generator_RowDeletedName="NameRowDeleted" msprop:Generator_RowClassName="NameRow" msprop:Generator_UserTableName="Name" msprop:Generator_RowEvArgName="NameRowChangeEvent">
           <xs:complexType>
             <xs:sequence>
               <xs:element name="Id" msdata:ReadOnly="true" msdata:AutoIncrement="true" msdata:AutoIncrementSeed="-1" msdata:AutoIncrementStep="-1" msprop:Generator_ColumnVarNameInTable="columnId" msprop:Generator_ColumnPropNameInRow="Id" msprop:Generator_ColumnPropNameInTable="IdColumn" msprop:Generator_UserColumnName="Id" type="xs:int" />

@@ -18,23 +18,19 @@ namespace SimpleTextProcessor
             dataSetSimpleTextTableAdapters.NameTableAdapter daName;
 
             daName = new dataSetSimpleTextTableAdapters.NameTableAdapter();
-            //Console.WriteLine(daName.ClearBeforeFill = false);
+            Console.WriteLine(daName.ClearBeforeFill);
 
-
-
-            dataSetSimpleText.NameRow rowName = tblName.NewNameRow();
-
-            foreach (var e in frequency)
+            var dataCount = daName.ScalarQuery();
+            if (dataCount != 0)
             {
-                rowName.word = e.Key;
-                rowName.wordCount = e.Value;
-                tblName.AddNameRow(rowName);
+                dbDeleteMethod(connectStringDB);
             }
 
-
-            Console.WriteLine("Load data ...");
-            daName.Update(tblName);
-            Console.WriteLine("End load data ");
+            // Console.WriteLine(daName.Fill(tblName));
+            foreach (var e in frequency)
+            {
+                daName.Insert(e.Key, e.Value);
+            }
 
         }
 
@@ -44,50 +40,58 @@ namespace SimpleTextProcessor
             foreach (DataColumn col in tbl.Columns)
                 Console.WriteLine("\t" + col.ColumnName + ": " + row[col]); 
         }
-        internal static void dbUpdateMethod(string connectStringDB, string text)
+        internal static void dbUpdateMethod(string connectStringDB, Dictionary<string, int> frequency)
         {
-            //string sqlExpression = string.Format("update name set @word, @wordCount");
-            //using (SqlConnection connection = new SqlConnection(connectStringDB))
-            //{
-            //    connection.Open();
-            //    Console.WriteLine("Подключение открыто");
-            //    SqlCommand command = new SqlCommand(sqlExpression, connection);
-            //    command.Parameters.Add("@word", SqlDbType.NVarChar);
-            //    command.Parameters.Add("@wordCount", SqlDbType.Int);
-            //    foreach (KeyValuePair<string, int> key in text.AsEnumerable())
-            //    {
-            //        command.Parameters["@word"].Value = key.Key;
-            //        command.Parameters["@wordCount"].Value = key.Value;
-            //        Console.WriteLine(command.ExecuteNonQuery());
-            //    }
+            dataSetSimpleText ds = new dataSetSimpleText();
+            dataSetSimpleText.NameDataTable tblName = ds.Name;
 
-            //}
-            //Console.WriteLine("Подключение закрыто...");
+            dataSetSimpleTextTableAdapters.NameTableAdapter daName;
+
+            daName = new dataSetSimpleTextTableAdapters.NameTableAdapter();
+            Console.WriteLine(daName.ClearBeforeFill);
+
+            foreach (var e in frequency)
+            {
+                tblName.AddNameRow(e.Key, e.Value);
+            }
+
+            Console.WriteLine("Update data ...");
+            daName.Update(tblName);
+            Console.WriteLine("End Update data ");
+           
         }
 
         internal static void dbAutoComplSearch(string connectStringDB, string autocomplitWord)
         {
-            string sqlExpression = string.Format("select * from Name where word like values (@adapterWord) + '%'");
-            using (SqlConnection connection = new SqlConnection(connectStringDB))
+            var findWorldDict = new Dictionary<string, int>();
+            var keyForRemove = new List<string>();
+            dataSetSimpleText ds = new dataSetSimpleText();
+            dataSetSimpleText.NameDataTable tblName = ds.Name;
+
+            dataSetSimpleTextTableAdapters.NameTableAdapter daName;
+
+            daName = new dataSetSimpleTextTableAdapters.NameTableAdapter();
+
+            Console.WriteLine(daName.ClearBeforeFill);
+            tblName.Clear();
+            daName.Fill(tblName);
+
+
+            foreach (dataSetSimpleText.NameRow rowName in tblName)
             {
-                connection.Open();
-                SqlCommand command = new SqlCommand(sqlExpression, connection);
-                command.Parameters.Add("@adapterWord", SqlDbType.NVarChar).Value = autocomplitWord;
-
-                SqlDataReader reader = command.ExecuteReader();
-
-                if(reader.HasRows)
-                {
-                    while (reader.Read())
-                    {
-                        Console.WriteLine("{0} \t {1}", reader.GetInt32(0), reader.GetString(1));
-                    }
-                }
-                else
-                {
-                    Console.WriteLine("No rows found.");
-                }
+                if (findWorldDict.ContainsKey(rowName.word) || !rowName.word.StartsWith(autocomplitWord))
+                    continue;
+                findWorldDict.Add(rowName.word, rowName.wordCount);
             }
+ 
+
+            foreach(var searchWords in findWorldDict)
+            {
+
+                Console.WriteLine(searchWords.Key, '\t', searchWords.Value);
+
+            }
+
         }
 
         internal static void dbDeleteMethod(string connectStringDB)
@@ -127,28 +131,5 @@ namespace SimpleTextProcessor
                 }
             }
         }
-
-
-
-
-        //private static DataTable ConvertToDataTable(Dictionary<string, int> frequency)
-        //{
-        //    var dt = new DataTable();
-        //    dt.Columns.Add("word", typeof(string));
-        //    dt.Columns.Add("wordCount", typeof(Int32));
-        //    foreach (var pair in frequency)
-        //    {
-        //        var row = dt.NewRow();
-        //        row["word"] = pair.Key;
-        //        row["wordCount"] = pair.Value;
-        //        dt.Rows.Add(row);
-        //    }
-        //    return dt;
-        //}
-        //     string[] directDir = fileName.FullName.Split('\\');
-			
-			//for(var i = 1; i<directDir.Length - 1; i++)
-			//	directoryInfo.Add(new DirectoryInfo("\\" + directDir[i]));
-			//directoryInfo.Add("\n");
     }
 }

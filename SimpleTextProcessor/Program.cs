@@ -64,10 +64,11 @@ namespace SimpleTextProcessor
                 while (true)
                 {
                     helloString(">");
-                    var classData = new ClassData();
+                    var autoCompliteData = new ClassData();
                     var autocomplitWord = Console.ReadLine();
                     if (autocomplitWord.Length != 0)
-                        classData.AutoComplite(connectStringDB, autocomplitWord);
+                        autoCompliteData.AutoComplite(connectStringDB, autocomplitWord);
+
                     else
                         exitProgramm();
                 }

@@ -26,7 +26,9 @@ namespace SimpleTextProcessor
 
         internal void UpdateData(string connectStringDB, string text)
         {
-            dataBaseInitial.dbUpdateMethod(connectStringDB, text);
+            var sentences = SentencesParserTask.ParseSentences(text);
+            var frequency = FrequencyAnalysisTask.GetMostFrequentNextWords(sentences);
+            dataBaseInitial.dbUpdateMethod(connectStringDB, frequency);
         }
     }
 }
