@@ -4,3 +4,12 @@ c:\users\ne_andrey\documents\visual studio 2015\Projects\SimpleTextProcessor\Sim
 c:\users\ne_andrey\documents\visual studio 2015\Projects\SimpleTextProcessor\SimpleTextProcessor\obj\Debug\SimpleTextProcessor.csprojResolveAssemblyReference.cache
 c:\users\ne_andrey\documents\visual studio 2015\Projects\SimpleTextProcessor\SimpleTextProcessor\obj\Debug\SimpleTextProcessor.exe
 c:\users\ne_andrey\documents\visual studio 2015\Projects\SimpleTextProcessor\SimpleTextProcessor\obj\Debug\SimpleTextProcessor.pdb
+C:\Users\1\Source\Repos\autocompliteSimpleProcess\SimpleTextProcessor\bin\Debug\SimpleTextProcessor.exe.config
+C:\Users\1\Source\Repos\autocompliteSimpleProcess\SimpleTextProcessor\bin\Debug\SimpleTextProcessor.exe
+C:\Users\1\Source\Repos\autocompliteSimpleProcess\SimpleTextProcessor\bin\Debug\SimpleTextProcessor.pdb
+C:\Users\1\Source\Repos\autocompliteSimpleProcess\SimpleTextProcessor\obj\Debug\SimpleTextProcessor.csproj.CoreCompileInputs.cache
+C:\Users\1\Source\Repos\autocompliteSimpleProcess\SimpleTextProcessor\obj\Debug\SimpleTextProcessor.exe
+C:\Users\1\Source\Repos\autocompliteSimpleProcess\SimpleTextProcessor\obj\Debug\SimpleTextProcessor.pdb
+C:\Users\1\Source\Repos\autocompliteSimpleProcess\SimpleTextProcessor\obj\Debug\SimpleTextProcessor.csprojAssemblyReference.cache
+C:\Users\1\source\repos\autocompliteSimpleProcess\SimpleTextProcessor\bin\Debug\simpleDataDB.mdf
+C:\Users\1\source\repos\autocompliteSimpleProcess\SimpleTextProcessor\bin\Debug\simpleDataDB_log.ldf

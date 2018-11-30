@@ -19,6 +19,7 @@ namespace SimpleTextProcessor
 
             daName = new dataSetSimpleTextTableAdapters.NameTableAdapter();
             Console.WriteLine(daName.ClearBeforeFill);
+            
 
             var dataCount = daName.ScalarQuery();
             if (dataCount != 0)
