@@ -13,3 +13,6 @@ C:\Users\1\Source\Repos\autocompliteSimpleProcess\SimpleTextProcessor\obj\Debug\
 C:\Users\1\Source\Repos\autocompliteSimpleProcess\SimpleTextProcessor\obj\Debug\SimpleTextProcessor.csprojAssemblyReference.cache
 C:\Users\1\source\repos\autocompliteSimpleProcess\SimpleTextProcessor\bin\Debug\simpleDataDB.mdf
 C:\Users\1\source\repos\autocompliteSimpleProcess\SimpleTextProcessor\bin\Debug\simpleDataDB_log.ldf
+C:\Users\andrey\Source\Repos\autocompliteSimpleProcess\SimpleTextProcessor\bin\Debug\SimpleTextProcessor.exe.config
+C:\Users\andrey\Source\Repos\autocompliteSimpleProcess\SimpleTextProcessor\obj\Debug\SimpleTextProcessor.exe
+C:\Users\andrey\Source\Repos\autocompliteSimpleProcess\SimpleTextProcessor\obj\Debug\SimpleTextProcessor.pdb
